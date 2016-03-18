@@ -5,10 +5,12 @@ import {
   NavBar,
   Group,
   View,
+  Card,
 } from 'amazeui-touch';
 import {
   Link,
 } from 'react-router';
+
 
 const Index = React.createClass({
   getDefaultProps() {
@@ -23,14 +25,43 @@ const Index = React.createClass({
       'Page2',
     ];
 
+
+    const header = (
+      <Card.Child cover="http://lorempixel.com/1000/625/people/">
+        <h3 className="card-title">
+          Cover + 标题: 我思念的城市
+        </h3>
+      </Card.Child>
+    );
+
+
+
     return pages.map((item, index) => {
+
+        const footer = (
+          <Card.Child role="footer">
+            <a>喜欢</a>
+            <a>评论</a>
+            <Link to={`/${item.toLowerCase()}`}>展开</Link>
+          </Card.Child>
+        );
       return (
-        <List.Item
-          linkComponent={Link}
-          linkProps={{to: `/${item.toLowerCase()}`}}
-          title={item}
-          key={index}
-        />
+
+          <Card
+            header={header}
+            footer={footer}
+            key={index}
+            >
+
+            风路过的时候  没能吹走 <br />
+            这个城市太厚的灰尘 <br />
+            多少次的雨水  从来没有 <br />
+            冲掉你那沉重的忧伤 <br />
+            你的忧伤  像我的绝望 <br />
+            那样漫长
+          </Card>
+
+
       );
     });
   },
@@ -40,17 +71,10 @@ const Index = React.createClass({
       <View>
         <NavBar
           amStyle="primary"
-          title="AMT Starter Kit"
+          title="时尚分享社区"
         />
         <Container scrollable>
-          <Group
-            header="Welcome to AMT."
-            noPadded
-          >
-            <List>
-              {this.renderItems()}
-            </List>
-          </Group>
+            {this.renderItems()}
         </Container>
       </View>
     );

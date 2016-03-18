@@ -38,7 +38,7 @@ const App = React.createClass({
           <TabBar.Item
             component={Link}
             icon="list"
-            title="组件"
+            title="精华"
             selected={!params.page}
             to="/"
           />
