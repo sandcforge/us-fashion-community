@@ -9,7 +9,7 @@ const About = React.createClass({
     return (
       <Container {...this.props}>
         <Group>
-          <h2>2015 SandCForge 版权所有</h2>
+          <h2>2016 SandCForge @ 版权所有</h2>
         </Group>
       </Container>
     );

@@ -46,7 +46,6 @@ const App = React.createClass({
             component={Link}
             icon='info'
             title='关于'
-            badge='404'
             selected={params.page === 'about'}
             to='/about'
           />
