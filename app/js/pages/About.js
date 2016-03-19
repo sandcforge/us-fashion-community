@@ -4,7 +4,7 @@ import {
   Group,
 } from 'amazeui-touch';
 
-const NotFound = React.createClass({
+const About = React.createClass({
   render: function() {
     return (
       <Container {...this.props}>
@@ -16,4 +16,4 @@ const NotFound = React.createClass({
   },
 });
 
-export default NotFound;
+export default About;

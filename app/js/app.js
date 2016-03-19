@@ -25,7 +25,7 @@ const App = React.createClass({
     const transition = children.props.transition || 'sfr';
 
     return (
-      <Container direction="column" id="sk-container">
+      <Container direction='column' id='sk-container'>
         <Container
           transition={transition}
         >
@@ -33,22 +33,22 @@ const App = React.createClass({
         </Container>
 
         <TabBar
-          amStyle="primary"
+          amStyle='primary'
         >
           <TabBar.Item
             component={Link}
-            icon="list"
-            title="精华"
-            selected={!params.page}
-            to="/"
+            icon='list'
+            title='精华'
+            selected={!params}
+            to='/'
           />
           <TabBar.Item
             component={Link}
-            icon="info"
-            title="关于"
-            badge="404"
+            icon='info'
+            title='关于'
+            badge='404'
             selected={params.page === 'about'}
-            to="/about"
+            to='/about'
           />
         </TabBar>
       </Container>
@@ -59,13 +59,16 @@ const App = React.createClass({
 // Pages
 import Index from './pages/Index';
 import Page from './pages/Page';
+import About from './pages/About';
 
 const routes = (
   <Router history={hashHistory}>
-    <Route path="/" component={App}>
+    <Route path='/' component={App}>
       <IndexRoute component={Index} />
-      <Route path=":page" component={Page} />
+        <Route path='/pages/:page' component={Page} />
+        <Route path='/about' component={About} />
     </Route>
+
   </Router>
 );
 

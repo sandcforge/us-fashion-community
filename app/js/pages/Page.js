@@ -2,46 +2,49 @@ import React from 'react';
 import {
   View,
   NavBar,
+  Slider,
+  Container,
 } from 'amazeui-touch';
 import {
   Link,
 } from 'react-router';
 
-import Page1 from './Page1';
-import Page2 from './Page2';
-import NotFound from './NotFound';
+import pageData from '../Data';
 
-const pages = {
-  Page1,
-  Page2,
-};
+
+
 
 const Page = React.createClass({
+  getPageIndex() {
+    return Number(this.props.params.page);
+  },
+  buildImageSlider() {
+    return (<Slider>
+
+        {pageData[this.getPageIndex()].contentImages.map((oneSrc, index) => {
+          return (
+            <Slider.Item key={index}>
+              <img src={oneSrc} />
+            </Slider.Item>
+          );
+        })}
+          </Slider>
+    )
+  },
+
   render() {
-    let page = this.props.params.page;
-
-    if (page) {
-      page = page.charAt(0).toUpperCase() + page.slice(1);
-    }
-
-    const Component = pages[page] || NotFound;
-    const backNav = {
-      component: Link,
-      icon: 'left-nav',
-      title: '返回',
-      props: {
-        to: '/',
-      },
-    };
-
+    let pageIndex = this.getPageIndex();
+    console.log(pageIndex);
     return (
       <View>
         <NavBar
-          title={page}
-          leftNav={[backNav]}
+          title={pageData[pageIndex].title}
           amStyle="primary"
         />
-        <Component scrollable />
+      <Container scrollable>
+      {this.buildImageSlider()}
+      {pageData[pageIndex].content}
+    </Container>
       </View>
     );
   },

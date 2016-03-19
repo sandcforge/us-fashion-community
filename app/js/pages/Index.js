@@ -11,6 +11,8 @@ import {
   Link,
 } from 'react-router';
 
+import pageData from '../Data';
+
 
 const Index = React.createClass({
   getDefaultProps() {
@@ -20,46 +22,34 @@ const Index = React.createClass({
   },
 
   renderItems() {
-    const pages = [
-      'Page1',
-      'Page2',
-    ];
+    return pageData.map((currentPage, index) => {
 
-
-    const header = (
-      <Card.Child cover="http://lorempixel.com/1000/625/people/">
-        <h3 className="card-title">
-          Cover + 标题: 我思念的城市
-        </h3>
-      </Card.Child>
-    );
-
-
-
-    return pages.map((item, index) => {
+      const header = (
+        <Card.Child cover={currentPage.coverImage}>
+          <h2 className="card-title">
+            {currentPage.title}
+          </h2>
+        </Card.Child>
+      );
 
         const footer = (
           <Card.Child role="footer">
             <a>喜欢</a>
             <a>评论</a>
-            <Link to={`/${item.toLowerCase()}`}>展开</Link>
+            <a>展开</a>
           </Card.Child>
         );
       return (
-
+        <Link to={`/pages/${String(index)}`}>
           <Card
             header={header}
             footer={footer}
             key={index}
             >
+            {currentPage.coverSummary}
 
-            风路过的时候  没能吹走 <br />
-            这个城市太厚的灰尘 <br />
-            多少次的雨水  从来没有 <br />
-            冲掉你那沉重的忧伤 <br />
-            你的忧伤  像我的绝望 <br />
-            那样漫长
           </Card>
+        </Link>
 
 
       );
@@ -71,7 +61,7 @@ const Index = React.createClass({
       <View>
         <NavBar
           amStyle="primary"
-          title="时尚分享社区"
+          title="北美时尚分享社区"
         />
         <Container scrollable>
             {this.renderItems()}
