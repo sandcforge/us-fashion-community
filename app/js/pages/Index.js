@@ -21,6 +21,16 @@ const Index = React.createClass({
     };
   },
 
+  getInitialState() {
+    return {like: pageData.map((currentPage, index) => {return currentPage.like})};
+  },
+
+  handleLikeClick(idx) {
+    let copyLike = this.state.like;
+    copyLike[idx] = copyLike[idx] + 1;
+    this.setState({like:copyLike});
+  },
+
   renderItems() {
     return pageData.map((currentPage, index) => {
 
@@ -32,15 +42,17 @@ const Index = React.createClass({
         </Card.Child>
       );
 
-        const footer = (
-          <Card.Child role="footer">
-            <a>喜欢</a>
-            <a>评论</a>
+      //let copyLike =
+      const footer = (
+        <Card.Child role="footer">
+          <a onClick={ this.handleLikeClick.bind(this,index)} >喜欢 {this.state.like[index]}</a>
+          <Link to={`/pages/${String(index)}`}>
             <a>展开</a>
-          </Card.Child>
-        );
+          </Link>
+        </Card.Child>
+      );
+
       return (
-        <Link to={`/pages/${String(index)}`}>
           <Card
             header={header}
             footer={footer}
@@ -49,7 +61,6 @@ const Index = React.createClass({
             {currentPage.coverSummary}
 
           </Card>
-        </Link>
 
 
       );

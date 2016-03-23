@@ -7,6 +7,7 @@ const pageData = [
   {
     index: 0,
     route: 'page1',
+    like: 1,
     title: '我思念的城市',
     coverImage: 'http://s.amazeui.org/media/i/demos/bing-1.jpg',
     coverSummary: (<div>            风路过的时候  没能吹走 <br />
@@ -29,6 +30,7 @@ const pageData = [
   {
     index: 1,
     route: 'page2',
+    like: 2,
     title: '我思念的城市2',
     coverImage: 'http://s.amazeui.org/media/i/demos/bing-2.jpg',
     coverSummary: (<div>风路过的时候  没能吹走<br />
